@@ -1,27 +1,27 @@
 <template>
     <b-form autocomplete="off">
-	<div>
-	  <b-jumbotron header="Simple Bitcoin Cash Converter" lead="Convert USD to Bitcoin Cash"></b-jumbotron>
-	</div>
+        <div>
+          <b-jumbotron header="Simple Bitcoin Cash Converter" lead="Convert USD to Bitcoin Cash"></b-jumbotron>
+        </div>
 
-	<b-container style="max-width:50em">
-	  <b-row no-gutters>
-	    <b-col cols="3">
-	      <b-form-input type="text" id="updatedCryptoQuantity" v-model="updatedCryptoQuantity" v-on:keyup="unitChanged" size="lg" />
-	    </b-col>
-	    <b-col cols="2" style="font-size:2em">
-	      BCH
-	    </b-col>
-	    <b-col cols="1" style="font-size:2em">
-	      =
-	    </b-col>
-	    <b-col cols="3">
-	      <b-form-input type="text" id="updatedConvertValue" v-model="updatedConvertValue" v-on:keyup="valueChanged" size="lg" />
-	    </b-col>
+        <b-container style="max-width:50em">
+          <b-row no-gutters>
+            <b-col cols="3">
+              <b-form-input type="text" id="updatedCryptoQuantity" v-model="updatedCryptoQuantity" v-on:keyup="unitChanged" size="lg" />
+            </b-col>
+            <b-col cols="2" style="font-size:2em">
+              BCH
+            </b-col>
+            <b-col cols="1" style="font-size:2em">
+              =
+            </b-col>
+            <b-col cols="3">
+              <b-form-input type="text" id="updatedConvertValue" v-model="updatedConvertValue" v-on:keyup="valueChanged" size="lg" />
+            </b-col>
             <b-col cols="3">
               <b-form-select v-model="fiatCurrency" :options="fiatDropdown" @change="init" size="lg"></b-form-select>
             </b-col>
-	  </b-row>
+          </b-row>
         </b-container>
 
     </b-form>
@@ -29,13 +29,16 @@
 
 <script>
 import Vue2Filters from 'vue2-filters'
+import Accounting from 'accounting'
 
 export default {
   data () {
     return {
+      cryptoCurrency: 'bch',
       cryptoQuantity: 1,
       convertValue: '',
       fiatCurrency: 'usd',
+      fiatSymbol: '$',
       fiatDropdown: [
         { text: 'US Dollar', value: 'usd' },
         { text: 'Euro', value: 'eur' },
@@ -46,37 +49,41 @@ export default {
         { text: 'Colombian Peso', value: 'cop' },
         { text: 'Mexican Peso', value: 'mxn' }
       ],
+      fiatSymbols: {
+         usd: '$',
+         eur: '€',
+         gbp: '£',
+         cny: '¥',
+         cad: '$',
+         sar: 'R',
+         cop: '$',
+         mxn: '$'
+      },
       updatedCryptoQuantity: '',
       updatedConvertValue: '',
-      updatedConvertFiat: '',
-      fiatSymbol: '$'
+      updatedConvertFiat: ''
     }
   },
   methods: {
     init () {
       this.axios
-        // .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .get('https://index-api.bitcoin.com/api/v0/cash/price/' + this.fiatCurrency)
+	.get('https://api.coinbase.com/v2/prices/' + this.cryptoCurrency + '-' + this.fiatCurrency + '/spot') // https://api.coinbase.com/v2/prices/spot?currency=' + this.fiatCurrency)
         .then(response => (
-          this.setValues(response)
+          this.setValues(response.data)
         ))
+      this.fiatSymbol = this.fiatSymbols[this.fiatCurrency]
     },
     setValues: function (values) {
-      this.convertValue = parseFloat(Math.round(values.data.price) / 100).toFixed(2)
+      this.convertValue = values.data.amount
       this.updatedCryptoQuantity = 1
-      this.updatedConvertValue = this.roundWithComma(this.convertValue)
+      this.updatedConvertValue = Accounting.formatMoney(this.convertValue, this.fiatSymbol, 2, ",", ".")
     },
     unitChanged: function () {
-      this.updatedConvertValue = this.fiatRound(this.convertValue * this.updatedCryptoQuantity)
+      this.updatedConvertValue = Accounting.formatMoney(this.convertValue * this.updatedCryptoQuantity, this.fiatSymbol, 2, ",", ".")
     },
     valueChanged: function () {
-      this.updatedCryptoQuantity = this.cryptoRound(this.updatedConvertValue / this.convertValue, 8)
-    },
-    fiatRound: function (number) {
-      return this.fiatSymbol + this.roundWithComma(parseFloat(Math.round(number * 100) / 100).toFixed(2))
-    },
-    roundWithComma: function (number) {
-      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      //this.updatedCryptoQuantity = this.cryptoRound(this.updatedConvertValue / this.convertValue, 8)
+      this.updatedCryptoQuantity = this.cryptoRound(Accounting.unformat(this.updatedConvertValue) / this.convertValue, 8)
     },
     cryptoRound: function (number, precision) {
       'use strict'

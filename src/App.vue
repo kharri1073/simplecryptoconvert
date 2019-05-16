@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <BitcoinConverter msg="Welcome to Your Vue.js App"/>
+    <a href="/"><img alt="Vue logo" width="200" src="/img/logo.png" style="margin:0 0 2em 0"></a>
+    <BitcoinConverter />
+    <Footer />
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import BitcoinConverter from './components/BitcoinConverter.vue'
+import Footer from './components/Footer.vue'
 export default {
   name: 'app',
   components: {
     // HelloWorld,
-    BitcoinConverter
+    BitcoinConverter,
+    Footer
   }
 }
 </script>
