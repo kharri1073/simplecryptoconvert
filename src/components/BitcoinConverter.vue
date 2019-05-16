@@ -1,7 +1,7 @@
 <template>
     <b-form autocomplete="off">
         <div>
-          <b-jumbotron header="Simple Bitcoin Cash Converter" lead="Convert USD to Bitcoin Cash"></b-jumbotron>
+          <b-jumbotron header="Simple Bitcoin Cash Converter" lead="Convert USD to Bitcoin Cash or the other way around"></b-jumbotron>
         </div>
 
         <b-container style="max-width:50em">
