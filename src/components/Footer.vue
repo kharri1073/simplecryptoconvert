@@ -28,15 +28,15 @@
                 <a href="https://nakamotoinstitute.org/bitcoin/">Bitcoin Whitepaper</a>
             </b-col>
           </b-row>
-	  <b-row>
-	    <b-col>
+          <b-row>
+            <b-col>
               <span>Is this useful?</span>
-	      <p>
-	        BTC: <a href="bitcoin:1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu">1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu</a><br>
-	        BCH: <a href="bitcoincash:qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh">qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh</a>
-	      </p>
+              <p>
+                BTC: <a href="bitcoin:1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu">1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu</a><br>
+                BCH: <a href="bitcoincash:qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh">qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh</a>
+              </p>
             </b-col>
-	  </b-row>
+          </b-row>
         </b-container>
 
         <p class="text-center">Copyright &copy; {{ copyDate.getFullYear() }}, SimpleCryptoConvert.com All Rights Reserved.</p>
