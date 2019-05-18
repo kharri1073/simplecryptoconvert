@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import BitcoinConverter from '@/components/BitcoinConverter'
+import VueAnalytics from 'vue-analytics'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ let router = new Router({
       }
     }
   ]
+})
+
+Vue.use(VueAnalytics, {
+  id: 'UA-249443-35',
+  router
 })
 
 export default router
