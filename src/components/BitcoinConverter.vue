@@ -45,9 +45,16 @@ export default {
         { text: 'Pound Sterling', value: 'gbp' },
         { text: 'Chinese Yen', value: 'cny' },
         { text: 'Canadian Dollar', value: 'cad' },
-        { text: 'South African Rand', value: 'sar' },
+        { text: 'South African Rand', value: 'zar' },
         { text: 'Colombian Peso', value: 'cop' },
-        { text: 'Mexican Peso', value: 'mxn' }
+        { text: 'Mexican Peso', value: 'mxn' },
+        { text: 'Indian Rupee', value: 'inr' },
+        { text: 'Swiss Franc', value: 'chf' },
+        { text: 'Russian Ruble', value: 'rub' },
+        { text: 'Saudi Riyal', value: 'sar' },
+        { text: 'Taiwan Dollar', value: 'twd' },
+        { text: 'Hong Kong Dollar', value: 'hkd' },
+        { text: 'Brazilian Real', value: 'brl' }
       ],
       fiatSymbols: {
          usd: '$',
@@ -55,9 +62,16 @@ export default {
          gbp: '£',
          cny: '¥',
          cad: '$',
-         sar: 'R',
+         zar: 'R',
          cop: '$',
-         mxn: '$'
+         mxn: 'Mex$',
+         inr: '₹',
+         chf: '₣',
+         rub: '₽',
+         sar: '﷼',
+         twd: 'NT$',
+         hkd: 'HK$',
+         brl: 'R$'
       },
       updatedCryptoQuantity: '',
       updatedConvertValue: '',
