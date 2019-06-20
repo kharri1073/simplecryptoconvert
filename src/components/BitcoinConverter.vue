@@ -11,7 +11,7 @@
             <b-col cols="2">
               <b-form-input type="text" id="updatedCryptoQuantity" v-model="updatedCryptoQuantity" v-on:keyup="unitChanged" size="lg" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="2">
               <b-dropdown v-model="cryptoCurrency" :options="cryptoDropdown" :text="selectedCrypto" id="crypto-dropdown" class="m-2">
                 <b-dropdown-item v-for="option in cryptoDropdown" :selected="option.value == 'bch'" :value="option.value" :to="'/'+option.value.toLowerCase()+'/'+fiatCurrency" v-bind:key="option.value" text="derp" @click="cryptoChanged(option)">{{option.text}}</b-dropdown-item>
               </b-dropdown>
@@ -22,7 +22,7 @@
             <b-col cols="3">
               <b-form-input type="text" id="updatedConvertValue" v-model="updatedConvertValue" v-on:keyup="valueChanged" size="lg" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="2">
               <b-dropdown v-model="fiatCurrency" :options="fiatDropdown" :text="selectedFiat" id="fiat-dropdown" class="m-2">
 		<b-dropdown-item v-for="option in fiatDropdown" :selected="option.value == 'usd'" :value="option.value" :to="'/'+cryptoCurrency.toLowerCase()+'/'+option.value" v-bind:key="option.value" @click="fiatChanged(option)">{{option.text}}</b-dropdown-item>
               </b-dropdown>
@@ -36,6 +36,13 @@
     <Footer/>
   </div>
 </template>
+
+<style scoped>
+.m-2 {
+    height: 48px;
+    margin:0 !important;
+}
+</style>
 
 <script>
 import Vue2Filters from 'vue2-filters'
@@ -194,7 +201,42 @@ export default {
     MonthlyChart,
     Footer
   },
-  mixins: [Vue2Filters.mixin]
+  mixins: [Vue2Filters.mixin],
+  metaInfo () {
+    return {
+      title: 'Simple Crypto Converter',
+      titleTemplate: '%s',
+      meta: [
+        {'http-equiv': 'Content-Type', content: 'text/html; charset=utf-8'},
+        {name: 'description', content: this.lead},
+        {property: 'og:title', content: this.header},
+        {property: 'og:site_name', content: 'Simple Crypto Convert'},
+        // The list of types is available here: http://ogp.me/#types
+        {property: 'og:type', content: 'website'},
+        // Should the the same as your canonical link, see below.
+        {property: 'og:url', content: 'https://simplecryptoconvert.com' + this.$route.path },
+        {property: 'og:image', content: 'https://simplecryptoconvert.com/img/logo.png'},
+        {property: 'og:description', content: this.lead},
+
+        // Twitter card
+        {name: 'twitter:card', content: 'summary'},
+        {name: 'twitter:site', content: 'https://simplecryptoconvert.com' + this.$route.path },
+        {name: 'twitter:title', content: this.header},
+        {name: 'twitter:description', content: 'I have things here on my site.'},
+        {name: 'twitter:creator', content: '@kharri1073'},
+        {name: 'twitter:image:src', content: 'https://simplecryptoconvert.com/img/logo.png'},
+
+        // Google / Schema.org markup:
+        {itemprop: 'name', content: this.header},
+        {itemprop: 'description', content: this.lead},
+        {itemprop: 'image', content: 'https://simplecryptoconvert.com/img/logo.png'}
+      ],
+      link: [
+        {rel: 'canonical', href: 'https://simplecryptoconvert.com' + this.$route.path}
+      ]
+    }
+  }
+
 
 }
 </script>

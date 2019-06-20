@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Meta from 'vue-meta'
 import App from './App'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -13,6 +14,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(Vue2Filters)
 Vue.use(VueAxios, axios)
+Vue.use(Meta)
 Vue.use(VueAnalytics, {
   id: 'UA-249443-35'
 })
