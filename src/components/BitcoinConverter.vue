@@ -1,32 +1,28 @@
 <template>
   <div>
-    <router-link to="/"><img alt="Vue logo" width="200" src="/img/logo.png" style="margin:0 0 2em 0"></router-link>
+    <router-link to="/"><img alt="Vue logo" width="200" src="/img/logo.png"></router-link>
     <b-form autocomplete="off">
         <div>
           <b-jumbotron :header="header" :lead="lead"></b-jumbotron>
         </div>
 
-        <b-container style="max-width:50em">
+        <b-container fluid>
           <b-row no-gutters>
-            <b-col cols="2">
-              <b-form-input type="text" id="updatedCryptoQuantity" v-model="updatedCryptoQuantity" v-on:keyup="unitChanged" size="lg" />
-            </b-col>
-            <b-col cols="2">
+            <b-col></b-col>
+            <b-col class="col-sm-auto">
+              <b-form-input type="text" id="updatedCryptoQuantity" v-model="updatedCryptoQuantity" v-on:keyup="unitChanged" size="lg" inputmode="decimal" />
               <b-dropdown v-model="cryptoCurrency" :options="cryptoDropdown" :text="selectedCrypto" id="crypto-dropdown" class="m-2">
                 <b-dropdown-item v-for="option in cryptoDropdown" :selected="option.value == 'bch'" :value="option.value" :to="'/'+option.value.toLowerCase()+'/'+fiatCurrency" v-bind:key="option.value" text="derp" @click="cryptoChanged(option)">{{option.text}}</b-dropdown-item>
               </b-dropdown>
-            </b-col>
-            <b-col cols="1" style="font-size:2em">
               =
-            </b-col>
-            <b-col cols="3">
-              <b-form-input type="text" id="updatedConvertValue" v-model="updatedConvertValue" v-on:keyup="valueChanged" size="lg" />
-            </b-col>
-            <b-col cols="2">
+              <b-form-input type="text" id="updatedConvertValue" v-model="updatedConvertValue" v-on:keyup="valueChanged" size="lg" inputmode="decimal" />
               <b-dropdown v-model="fiatCurrency" :options="fiatDropdown" :text="selectedFiat" id="fiat-dropdown" class="m-2">
 		<b-dropdown-item v-for="option in fiatDropdown" :selected="option.value == 'usd'" :value="option.value" :to="'/'+cryptoCurrency.toLowerCase()+'/'+option.value" v-bind:key="option.value" @click="fiatChanged(option)">{{option.text}}</b-dropdown-item>
               </b-dropdown>
             </b-col>
+            <b-col></b-col>
+            <!--<b-col id="right" style="margin:10px" class="col-auto col-sm mx-auto">
+            </b-col>-->
           </b-row>
         </b-container>
     </b-form>
@@ -38,9 +34,28 @@
 </template>
 
 <style scoped>
+.jumbotron {
+    padding:2rem 1rem;
+}
 .m-2 {
     height: 48px;
     margin:0 !important;
+}
+.form-control {
+    display:inline-block;
+    margin:0 2px;
+}
+.btn-group {
+    vertical-align:top;
+}
+#updatedCryptoQuantity {
+    max-width: 8em;
+}
+#updatedConvertValue {
+    max-width:10em;
+}
+#right {
+    display:none;
 }
 </style>
 
@@ -236,7 +251,5 @@ export default {
       ]
     }
   }
-
-
 }
 </script>
