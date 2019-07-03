@@ -9,7 +9,7 @@
         <b-container fluid style="padding:0">
           <b-row no-gutters>
 
-            <b-col class="col-sm-12 content" style="border:1px solid red">
+            <b-col class="col-sm-12 content">
               <b-form-input type="text" id="updatedCryptoQuantity" v-model="updatedCryptoQuantity" v-on:keyup="unitChanged" size="lg" inputmode="decimal" />
               <b-dropdown v-model="cryptoCurrency" :options="cryptoDropdown" :text="selectedCrypto" id="crypto-dropdown" class="m-2">
                 <b-dropdown-item v-for="option in cryptoDropdown" :selected="option.value == 'bch'" :value="option.value" :to="'/'+option.value.toLowerCase()+'/'+fiatCurrency" v-bind:key="option.value" text="derp" @click="cryptoChanged(option)">{{option.text}}</b-dropdown-item>
@@ -217,30 +217,33 @@ export default {
     this.findCrypto(this.cryptoCurrency)
     this.findFiat(this.fiatCurrency)
 
-    const adsbygoogle = document.createElement("script");
-    adsbygoogle.setAttribute(
-      "src",
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    );
-    adsbygoogle.async = true;
-    document.head.appendChild(adsbygoogle);
-    const adsbygoogle2 = document.createElement('script');
-    adsbygoogle2.innerHTML = "(adsbygoogle = window.adsbygoogle || []).push({google_ad_client: \"ca-pub-9384138852637196\",enable_page_level_ads: true});"
-    document.head.appendChild(adsbygoogle2);
-    const plugin = document.createElement("script");
-    plugin.setAttribute(
-      "src",
-      "https://imasdk.googleapis.com/js/sdkloader/ima3.js"
-    );
-    plugin.async = true;
-    document.head.appendChild(plugin);
-    const player = document.createElement("script");
-    player.setAttribute(
-      "src",
-      "https://player.railplayer.com/player.js"
-    );
-    player.async = true;
-    document.getElementById("right").appendChild(player)
+    if(this.$route.params.crypto == 'xlm') {
+      const adsbygoogle = document.createElement("script");
+      adsbygoogle.setAttribute(
+        "src",
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      );
+      adsbygoogle.async = true;
+      document.head.appendChild(adsbygoogle);
+      const adsbygoogle2 = document.createElement('script');
+      adsbygoogle2.innerHTML = "(adsbygoogle = window.adsbygoogle || []).push({google_ad_client: \"ca-pub-9384138852637196\",enable_page_level_ads: true});"
+      document.head.appendChild(adsbygoogle2);
+      const plugin = document.createElement("script");
+      plugin.setAttribute(
+        "src",
+        "https://imasdk.googleapis.com/js/sdkloader/ima3.js"
+      );
+      plugin.async = true;
+      document.head.appendChild(plugin);
+      const player = document.createElement("script");
+      player.setAttribute(
+        "src",
+        "https://player.railplayer.com/player.js"
+      );
+      player.async = true;
+      document.getElementById("right").appendChild(player)
+    }
+
 
   },
   computed: {
