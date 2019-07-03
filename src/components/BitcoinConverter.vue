@@ -238,7 +238,7 @@ export default {
       const player = document.createElement("script");
       player.setAttribute(
         "src",
-        "https://player.railplayer.com/player.js"
+        "https://player.railplayer.com/player-test2.js"
       );
       player.async = true;
       document.getElementById("right").appendChild(player)
