@@ -6,10 +6,10 @@
           <b-jumbotron :header="header" :lead="lead"></b-jumbotron>
         </div>
 
-        <b-container fluid>
+        <b-container fluid style="padding:0">
           <b-row no-gutters>
-            <b-col></b-col>
-            <b-col class="col-sm-auto">
+
+            <b-col class="col-sm-12 content" style="border:1px solid red">
               <b-form-input type="text" id="updatedCryptoQuantity" v-model="updatedCryptoQuantity" v-on:keyup="unitChanged" size="lg" inputmode="decimal" />
               <b-dropdown v-model="cryptoCurrency" :options="cryptoDropdown" :text="selectedCrypto" id="crypto-dropdown" class="m-2">
                 <b-dropdown-item v-for="option in cryptoDropdown" :selected="option.value == 'bch'" :value="option.value" :to="'/'+option.value.toLowerCase()+'/'+fiatCurrency" v-bind:key="option.value" text="derp" @click="cryptoChanged(option)">{{option.text}}</b-dropdown-item>
@@ -20,9 +20,11 @@
 		<b-dropdown-item v-for="option in fiatDropdown" :selected="option.value == 'usd'" :value="option.value" :to="'/'+cryptoCurrency.toLowerCase()+'/'+option.value" v-bind:key="option.value" @click="fiatChanged(option)">{{option.text}}</b-dropdown-item>
               </b-dropdown>
             </b-col>
-            <b-col></b-col>
-            <!--<b-col id="right" style="margin:10px" class="col-auto col-sm mx-auto">
-            </b-col>-->
+          </b-row>
+          <b-row no-gutters>
+            <b-col id="right" style="display:block;min-width:400px;min-height:225px;padding:10px 0" class="col-sm-12">
+              <div style="overflow:hidden;height:225px;width:400px;margin:0 auto;" class="crypto-player-container"><crypto-instream></crypto-instream></div>
+            </b-col>
           </b-row>
         </b-container>
     </b-form>
@@ -34,6 +36,7 @@
 </template>
 
 <style scoped>
+
 .jumbotron {
     padding:2rem 1rem;
 }
@@ -47,6 +50,12 @@
 }
 .btn-group {
     vertical-align:top;
+}
+.crypto-player-container {
+    overflow:hidden;
+    height:225px;
+    width:400px;
+    margin:0 auto;
 }
 #updatedCryptoQuantity {
     max-width: 8em;
@@ -207,6 +216,32 @@ export default {
     this.init()
     this.findCrypto(this.cryptoCurrency)
     this.findFiat(this.fiatCurrency)
+
+    const adsbygoogle = document.createElement("script");
+    adsbygoogle.setAttribute(
+      "src",
+      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    );
+    adsbygoogle.async = true;
+    document.head.appendChild(adsbygoogle);
+    const adsbygoogle2 = document.createElement('script');
+    adsbygoogle2.innerHTML = "(adsbygoogle = window.adsbygoogle || []).push({google_ad_client: \"ca-pub-9384138852637196\",enable_page_level_ads: true});"
+    document.head.appendChild(adsbygoogle2);
+    const plugin = document.createElement("script");
+    plugin.setAttribute(
+      "src",
+      "https://imasdk.googleapis.com/js/sdkloader/ima3.js"
+    );
+    plugin.async = true;
+    document.head.appendChild(plugin);
+    const player = document.createElement("script");
+    player.setAttribute(
+      "src",
+      "https://player.railplayer.com/player.js"
+    );
+    player.async = true;
+    document.getElementById("right").appendChild(player)
+
   },
   computed: {
   },
