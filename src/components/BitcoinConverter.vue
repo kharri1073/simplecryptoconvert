@@ -217,7 +217,6 @@ export default {
     this.findCrypto(this.cryptoCurrency)
     this.findFiat(this.fiatCurrency)
 
-    if(this.$route.params.crypto == 'xlm') {
       const adsbygoogle = document.createElement("script");
       adsbygoogle.setAttribute(
         "src",
@@ -228,6 +227,8 @@ export default {
       const adsbygoogle2 = document.createElement('script');
       adsbygoogle2.innerHTML = "(adsbygoogle = window.adsbygoogle || []).push({google_ad_client: \"ca-pub-9384138852637196\",enable_page_level_ads: true});"
       document.head.appendChild(adsbygoogle2);
+
+    if(this.$route.params.crypto == 'xlm') {
       const plugin = document.createElement("script");
       plugin.setAttribute(
         "src",
