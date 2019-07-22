@@ -258,8 +258,8 @@ export default {
   mixins: [Vue2Filters.mixin],
   metaInfo () {
     return {
-      title: 'Simple Crypto Converter',
-      titleTemplate: '%s',
+      title: this.header,
+      titleTemplate: '%s - Crypto Calculator',
       meta: [
         {'http-equiv': 'Content-Type', content: 'text/html; charset=utf-8'},
         {name: 'description', content: this.lead},
