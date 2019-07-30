@@ -37,6 +37,15 @@
 
 <style scoped>
 
+.display-3 {
+    font-size: 1.75rem;
+    font-weight:700;
+}
+
+.no-gutters input {
+    margin-bottom:10px;
+}
+
 .jumbotron {
     padding:2rem 1rem;
 }
@@ -66,10 +75,47 @@
 #right {
     display:none;
 }
+
+@media (min-width: 576px) {
+
+  .display-3 {
+      font-size: 2rem;
+  }
+
+  .no-gutters input {
+      margin-bottom:0px;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .display-3 {
+      font-size: 3rem;
+      font-weight:300;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  .display-3 {
+      font-size: 3.5rem;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+  .display-3 {
+      font-size: 4.5rem;
+  }
+
+}
+
 </style>
 
 <script>
-import Vue2Filters from 'vue2-filters'
 import Accounting from 'accounting'
 
 import MonthlyChart from './MonthlyChart'
@@ -255,7 +301,6 @@ export default {
     MonthlyChart,
     Footer
   },
-  mixins: [Vue2Filters.mixin],
   metaInfo () {
     return {
       title: this.header,

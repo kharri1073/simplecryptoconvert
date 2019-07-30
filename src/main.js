@@ -5,14 +5,12 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
-import Vue2Filters from 'vue2-filters'
 import Accounting from 'accounting'
 import VueAnalytics from 'vue-analytics'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
-Vue.use(Vue2Filters)
 Vue.use(VueAxios, axios)
 Vue.use(Meta)
 Vue.use(VueAnalytics, {
@@ -21,6 +19,8 @@ Vue.use(VueAnalytics, {
 Vue.use(Accounting)
 
 Vue.config.productionTip = false
+
+export const cryptoType = new Vue();
 
 new Vue({
   render: h => h(App),
