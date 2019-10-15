@@ -177,7 +177,7 @@ export default {
          brl: 'R$'
       },
       header: 'Simple '+this.selectedCrypto+' Converter',
-      lead: 'Convert '+this.selectedFiat+' to '+this.selectedCrypto+' or the other way around',
+      lead: 'Convert '+this.selectedFiat+' to '+this.selectedCrypto+' and the other way around',
       uriParams: typeof this.$route.params.crypto !== "undefined" ? this.$route.params : { crypto: 'BCH' },
       selectedCrypto: typeof this.$route.params.crypto !== "undefined" ? this.$route.params.crypto : 'Bitcoin Cash',
       selectedFiat: typeof this.$route.params.crypto !== "undefined" ? this.$route.params.fiat : 'US Dollars',
@@ -211,7 +211,7 @@ export default {
     fiatChanged: function(options) {
       this.selectedFiat = options.text
       this.fiatCurrency = options.value
-      this.lead = 'Convert '+options.text+'s to '+this.selectedCrypto+' or the other way around'
+      this.lead = 'Convert '+options.text+'s to '+this.selectedCrypto+' and the other way around'
       this.init()
     },
     cryptoChanged: function(options) {
@@ -219,7 +219,7 @@ export default {
       this.cryptoCurrencyUpdated = options.value
       this.cryptoCurrency = options.value
       this.header = 'Simple ' + options.text + ' Converter'
-      this.lead = 'Convert '+this.selectedFiat+'s to '+options.text+' or the other way around'
+      this.lead = 'Convert '+this.selectedFiat+'s to '+options.text+' and the other way around'
       this.init()
     },
     cryptoRound: function (number, precision) {
@@ -254,7 +254,7 @@ export default {
     findFiat: function(fiat) {
       var fiatName
       fiatName = this.fiatDropdown.filter(p => p.value == fiat)
-      this.lead = 'Convert '+fiatName[0].text+'s to '+this.selectedCrypto+' or the other way around'
+      this.lead = 'Convert '+fiatName[0].text+'s to '+this.selectedCrypto+' and the other way around'
       this.selectedFiat = fiatName[0].text
     }
   },
@@ -303,11 +303,11 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.header,
-      titleTemplate: '%s - Crypto Calculator',
+      title: this.selectedCrypto + ' to ' + this.selectedFiat + ' Converter',
+      titleTemplate: '%s Calculator',
       meta: [
         {'http-equiv': 'Content-Type', content: 'text/html; charset=utf-8'},
-        {name: 'description', content: this.lead},
+        {name: 'description', content: 'Simple crypto calculator to '+this.lead},
         {property: 'og:title', content: this.header},
         {property: 'og:site_name', content: 'Simple Crypto Convert'},
         // The list of types is available here: http://ogp.me/#types
@@ -321,7 +321,7 @@ export default {
         {name: 'twitter:card', content: 'summary'},
         {name: 'twitter:site', content: 'https://simplecryptoconvert.com' + this.$route.path },
         {name: 'twitter:title', content: this.header},
-        {name: 'twitter:description', content: 'I have things here on my site.'},
+        {name: 'twitter:description', content: 'Simple Crypto Converter'},
         {name: 'twitter:creator', content: '@kharri1073'},
         {name: 'twitter:image:src', content: 'https://simplecryptoconvert.com/img/logo.png'},
 

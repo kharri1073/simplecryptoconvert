@@ -1,11 +1,13 @@
 <script>
 import { Line } from 'vue-chartjs'
+import { cryptoType } from '../main';
  
 export default {
   extends: Line,
   data () {
     return {
       data: {
+        selectedCrypto: '',
         labels: [],
         datasets: [
           {
@@ -28,6 +30,11 @@ export default {
   },
   methods: {
     init () {
+
+      cryptoType.$on('cryptoSelected', (selectedCrypto) => {
+       this.selectedCrypto = selectedCrypto;
+      });
+
       this.axios
         .get('https://min-api.cryptocompare.com/data/histoday?aggregate=1&e=CCCAGG&extraParams=CryptoCompare&fsym=BCH&limit=30&tryConversion=false&tsym=USD')
         .then(response => (
