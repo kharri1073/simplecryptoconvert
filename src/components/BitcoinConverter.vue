@@ -331,7 +331,13 @@ export default {
         {itemprop: 'image', content: 'https://simplecryptoconvert.com/img/logo.png'}
       ],
       link: [
-        {rel: 'canonical', href: 'https://simplecryptoconvert.com' + this.$route.path}
+        {rel: 'canonical', href: 'https://simplecryptoconvert.com' + this.$route.path},
+        {rel: 'dns-prefetch', href: 'https://www.google-analytics.com'},
+        {rel: 'dns-prefetch', href: 'https://min-api.cryptocompare.com'},
+        {rel: 'dns-prefetch', href: 'https://adservice.google.com'},
+        {rel: 'dns-prefetch', href: 'https://www.googletagservices.com'},
+        {rel: 'dns-prefetch', href: 'https://googleads.g.doubleclick.net'},
+        {rel: 'dns-prefetch', href: 'https://pagead2.googlesyndication.com'},
       ]
     }
   }

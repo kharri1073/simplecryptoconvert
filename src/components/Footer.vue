@@ -24,17 +24,17 @@
             </b-col>
             <b-col cols="3">
                 In code we trust.
-		<br /><br />
+		<br />
                 <a href="https://nakamotoinstitute.org/bitcoin/">Bitcoin Whitepaper</a>
             </b-col>
           </b-row>
           <b-row>
             <b-col>
               <span>Is this useful?</span>
-              <p>
-                BTC: <a href="bitcoin:1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu">1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu</a><br>
-                BCH: <a href="bitcoincash:qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh">qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh</a>
-              </p>
+              <ul>
+                <li>BTC: <a href="bitcoin:1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu">1DmMGUi9KxrHkwaCvBBb88mcqRgp114gEu</a></li>
+		<li>BCH: <a href="bitcoincash:qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh">qzxqfwk2qgnux2gyrpl4xx85h9scck2nhgxj2x7cyh</a></li>
+              </ul>
             </b-col>
           </b-row>
         </b-container>
@@ -67,6 +67,10 @@ ol, ul, li {
     margin:0;
     padding:0;
 }
+li {
+    margin-bottom: 8px;
+}
+
 p {
     font-size:.8em;
 }
@@ -78,4 +82,11 @@ p {
     margin-bottom: 0px;
     color: #000;
 }
+.footer {
+    padding:20px 0 0 0;
+}
+footer a {
+    color:#95232e;
+}
+
 </style>
