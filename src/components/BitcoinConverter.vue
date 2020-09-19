@@ -21,11 +21,11 @@
               </b-dropdown>
             </b-col>
           </b-row>
-          <b-row no-gutters>
+          <!--<b-row no-gutters>
             <b-col id="right" style="display:block;min-width:400px;min-height:225px;padding:10px 0" class="col-sm-12">
               <div style="overflow:hidden;height:225px;width:400px;margin:0 auto;" class="crypto-player-container"><crypto-instream></crypto-instream></div>
             </b-col>
-          </b-row>
+          </b-row>-->
         </b-container>
     </b-form>
     <div style="position: relative; height:200px; width:60%; margin:2em auto 0;">
@@ -145,7 +145,7 @@ export default {
         { text: 'Euro', value: 'eur' },
         { text: 'Pound Sterling', value: 'gbp' },
 	{ text: 'Japanese Yen', value: 'jpy' },
-        { text: 'Chinese Yen', value: 'cny' },
+        { text: 'Chinese Yuan', value: 'cny' },
         { text: 'Canadian Dollar', value: 'cad' },
         { text: 'South African Rand', value: 'zar' },
         { text: 'Colombian Peso', value: 'cop' },
@@ -262,7 +262,7 @@ export default {
     this.init()
     this.findCrypto(this.cryptoCurrency)
     this.findFiat(this.fiatCurrency)
-
+      /*
       const adsbygoogle = document.createElement("script");
       adsbygoogle.setAttribute(
         "src",
@@ -273,7 +273,7 @@ export default {
       const adsbygoogle2 = document.createElement('script');
       adsbygoogle2.innerHTML = "(adsbygoogle = window.adsbygoogle || []).push({google_ad_client: \"ca-pub-9384138852637196\",enable_page_level_ads: true});"
       document.head.appendChild(adsbygoogle2);
-
+      */
     if(this.$route.params.crypto == 'xlm') {
       const plugin = document.createElement("script");
       plugin.setAttribute(
@@ -338,6 +338,17 @@ export default {
         {rel: 'dns-prefetch', href: 'https://www.googletagservices.com'},
         {rel: 'dns-prefetch', href: 'https://googleads.g.doubleclick.net'},
         {rel: 'dns-prefetch', href: 'https://pagead2.googlesyndication.com'},
+        // apple pwa icons
+        {href: '/splashscreens/iphone5_splash.png', media: '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/iphone6_splash.png', media: '(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/iphoneplus_splash.png', media: '(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/iphonex_splash.png', media: '(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/iphonexr_splash.png', media: '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/iphonexsmax_splash.png', media: '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/ipad_splash.png', media: '(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/ipadpro1_splash.png', media: '(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/ipadpro3_splash.png', media: '(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)', rel: 'apple-touch-startup-image'},
+        {href: '/splashscreens/ipadpro2_splash.png', media: '(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)', rel: 'apple-touch-startup-image'},
       ]
     }
   }

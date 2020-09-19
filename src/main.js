@@ -9,6 +9,7 @@ import Accounting from 'accounting'
 import VueAnalytics from 'vue-analytics'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './registerServiceWorker'
 
 Vue.use(BootstrapVue)
 Vue.use(VueAxios, axios)

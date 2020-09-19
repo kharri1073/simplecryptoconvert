@@ -2,37 +2,42 @@
   "name": "simplecryptoconvert",
   "version": "0.1.0",
   "private": true,
-  "content_security_policy": "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "dev": "webpack-dev-server --progress",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "accounting": "^0.4.1",
     "axios": "^0.18.1",
-    "bootstrap": "^4.5.0",
-    "bootstrap-vue": "^2.15.0",
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.16.0",
     "chart.js": "^2.9.3",
     "core-js": "^2.6.11",
     "cors": "^2.8.5",
-    "vue": "^2.6.11",
+    "register-service-worker": "^1.7.1",
+    "vue": "^2.6.12",
     "vue-analytics": "^5.22.1",
     "vue-axios": "^2.1.5",
-    "vue-chartjs": "^3.5.0",
+    "vue-chartjs": "^3.5.1",
     "vue-meta": "^2.4.0",
-    "vue-router": "^3.3.4",
+    "vue-router": "^3.4.3",
     "vue2-filters": "^0.6.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-plugin-pwa": "^4.5.6",
     "@vue/cli-service": "^3.12.1",
     "babel-eslint": "^10.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
-    "vue-template-compiler": "^2.6.11",
-    "webpack-bundle-analyzer": "^3.8.0"
+    "sw-precache-webpack-plugin": "^1.0.0",
+    "vue-template-compiler": "^2.6.12",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.12"
   },
   "eslintConfig": {
     "root": true,
@@ -56,5 +61,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "content_security_policy": "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'"
 }
